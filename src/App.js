@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.css'
+import LoginPage from './pages/LoginPage/LoginPage'
+import { Routes, Route } from 'react-router-dom'
+import PrivateRoutes from './utils/PrivateRoutes'
+import {AuthProvider} from './context/AuthContext'
+import UserPages from './pages/UserPages/UserPages'
+import { createTheme} from '@mui/material/styles'
+import { green, orange } from '@mui/material/colors'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
-export default App;
+  return (
+    <>
+        <AuthProvider>
+          <Routes>
+              <Route path='/' element={<LoginPage/>}/>
+              <Route element = {<PrivateRoutes/>}>
+                <Route path='/u/:username/*' element={<UserPages/>}/>
+              </Route>
+          </Routes>
+        </AuthProvider>
+    </>
+  )
+} 
+
+export default App

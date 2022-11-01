@@ -53,12 +53,11 @@ function UserPages() {
   ]
   
     return (
-      <Box sx = {{display: 'flex',justifyContent: 'space-evenly'}}>
+      <Box sx = {{display: 'flex'}}>
         <Drawer
           variant = 'permanent'
-          anchor='right'
-          
-          sx = {{ "& .MuiDrawer-paper": drawerSx.paper }}
+          anchor='left'
+          sx = {{width: drawerSx.paper,flexShrink: 0,boxSizing: 'border-box', "& .MuiDrawer-paper": drawerSx.paper }}
         >
           <List>
             {menuItems.map(item => (

@@ -15,27 +15,28 @@ export const AuthProvider = ({children}) => {
     let login = async (e) => {
         
         e.preventDefault()
-        let response = await fetch('http://127.0.0.1:8000/api/token/',{
+
+        let response = await fetch('http://127.0.0.1:8000/auth/',{
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({'email':e.target.email.value, 'password':e.target.password.value})
+            body: new URLSearchParams(
+                {
+                    'username': e.target.email.value,
+                    'password': e.target.password.value
+                }
+            )
         })
 
         
         let data = await response.json()
 
         if(response.status === 200){
-            const decode = jwt_decode(data.access)
+            const decode = jwt_decode(data.access_token)
             setAuthTokens(data)
             setUser(decode)
             localStorage.setItem('authTokens', JSON.stringify(data))
             navigate(`/u/${decode.username}`)
-            //history.push('/')
         }else{
-            alert('Something went wrong!')
-            return
+            alert(`Error: ${response.status}`)
         }
         
     }
@@ -43,13 +44,15 @@ export const AuthProvider = ({children}) => {
     let logout = () => {
         setAuthTokens(null)
         setUser(null)
+        localStorage.removeItem('authTokens')
+        navigate('/')
     }
 
     let contextData = {
         user:user,
         authTokens:authTokens,
         login:login,
-        // logoutUser:logoutUser,
+        logout: logout,
     }
 
     return (

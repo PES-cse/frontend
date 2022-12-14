@@ -5,8 +5,6 @@ import { Routes, Route } from 'react-router-dom'
 import PrivateRoutes from './utils/PrivateRoutes'
 import {AuthProvider} from './context/AuthContext'
 import UserPages from './pages/UserPages/UserPages'
-import { createTheme} from '@mui/material/styles'
-import { green, orange } from '@mui/material/colors'
 
 function App() {
 

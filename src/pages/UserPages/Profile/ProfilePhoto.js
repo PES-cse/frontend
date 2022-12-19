@@ -44,13 +44,13 @@ function ProfilePhoto() {
 				method: 'GET',
 				headers:{
 					'Content-Type': 'application/json',
-          'Authorization': `Bearer ${authTokens.access_token}`
+          			'Authorization': `Bearer ${authTokens.access_token}`
 				}
 			})
 			if(response.status === 200){
 				const imageBlob = await response.blob()
 				const imageObjectURL = URL.createObjectURL(imageBlob)
-    		setImage(imageObjectURL)
+    			setImage(imageObjectURL)
 			}
 			else
 				console.log('Error' + response.status)

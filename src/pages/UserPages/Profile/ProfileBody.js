@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import AuthContext from '../../../context/AuthContext'
 import { useContext } from 'react';
+import { color } from '@mui/system';
 
 function ProfileBody() {
 
@@ -38,8 +39,13 @@ function ProfileBody() {
 
   return (
     <div style = {style.container}>
-      <div style={style.dataContent}><h3 style = {{margin: 0, padding: '0.25rem 0'}}>Email:</h3><h3 style = {{margin: 0, padding: '0.25rem 0'}}>{data.email}</h3></div>
-      <div style={style.dataContent}><h3 style = {style.marginPadding}>Department:</h3><h3 style = {style.marginPadding}>{data.department}</h3></div>
+      <div style={style.dataContent}><h3 style = {{marginTop:38, padding:'0.25rem 0'}}>Name</h3><h3 style = {{marginTop: 38, padding: '0.25rem 0', color:'#0000FF'}}>{data.username}</h3> </div>
+      <div style={style.dataContent}><h3 style = {{marginTop:38, padding:'0.25rem 0'}}>Email</h3><h3 style = {{marginTop: 38, padding: '0.25rem 0', color:'#0000FF'}}>{data.email}</h3></div>
+      <div style={style.dataContent}><h3 style = {{marginTop:38, padding:'0.25rem 0'}}>Department</h3><h3 style = {{marginTop: 38, padding:'0.25rem 0', color:'#0000FF'}}>{data.department}</h3></div>
+      <div style={style.dataContent}><h3 style = {{marginTop:38, padding:'0.25rem 0'}}>Joined Date</h3><h3 style={{marginTop: 38, padding:'0.25rem 0', color:'#0000FF'}}>{data.joineddate}</h3></div>
+      <div style={style.dataContent}><h3 style = {{marginTop:38, padding:'0.25rem 0'}}>Qualification</h3><h3 style={{marginTop: 38, padding:'0.25rem 0', color:'#0000FF'}}>{data.qualification}</h3></div>
+      <div style={style.dataContent}><h3 style = {{marginTop:38, padding:'0.25rem 0'}}>Employee Number</h3><h3 style={{marginTop:  38, padding:'0.25rem 0', color:'#0000FF'}}>{data.emplyoeenumber}</h3></div>
+
     </div>
   )
 }

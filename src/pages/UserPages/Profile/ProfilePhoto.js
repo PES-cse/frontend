@@ -33,7 +33,8 @@ function ProfilePhoto() {
 		addBtn: {
 			color: '#B9E6F4',
 			fontSize: '3rem',
-		}
+		},
+		
 	}
 
 	const [image, setImage] = useState(null)
@@ -71,6 +72,8 @@ function ProfilePhoto() {
       }
     })
   }
+
+  
 
 	let handleAddPhoto = async (e) => {
 		e.preventDefault()
